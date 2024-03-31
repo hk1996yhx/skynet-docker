@@ -8,13 +8,13 @@
 
 2.使用下面的命令来启动 Skynet 容器：
 
-    docker run -d --name 服务名字 \
-        -p 8000:8000 \
-        -p 9000:9000 \
-        -v "${PWD}/src:/yhx/src" \
-        skynet_docker \
+    docker run -d --name service-DB `
+        -p 8000:8000 `
+        -p 9000:9000 `
+        -v "${PWD}/src:/yhx/src" `
+        skynet_docker `
         ../skynet/skynet ./etc/config.nodedb
-    
+
 这条命令的各个组成部分意味着：
 - -d：后台运行容器。
 - --name skynet-service：设置容器名称为 skynet-service。
