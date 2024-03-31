@@ -4,8 +4,8 @@ services:
     build: 
       context: .
     ports:
-      - "8000:8000" # 端口映射1
-      - "9000:9000" # 端口映射2
+      - "8000:8000"
+      - "9000:9000"
     volumes:
-      - ./src:/yhx/src # 将本地的 src 目录映射到容器的 /yhx/src 目录
-    command: ../skynet/skynet ./etc/config.nodedb # 使用容器内的正确路径执行 Skynet
+      - ./src:/yhx/src
+    command: ../skynet/skynet ./etc/config.nodedb
