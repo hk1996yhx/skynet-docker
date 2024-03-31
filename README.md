@@ -1,12 +1,12 @@
-您可以通过以下命令在 Docker 中构建 Skynet 服务的镜像：
+#您可以通过以下命令在 Docker 中构建 Skynet 服务的镜像：
 
-构建 Skynet Docker 镜像
+1.构建 Skynet Docker 镜像
 
 docker build -t skynet_docker .
 
 其中 -t skynet_docker 指定了镜像的标签，而 . 表示 Docker 上下文目录为当前目录（其中包含 Dockerfile 和 src 目录）。
 
-使用下面的命令来启动 Skynet 容器：(下面每一行都是有\连接符,被格式化了)
+2.使用下面的命令来启动 Skynet 容器：(下面每一行都是有\连接符,被格式化了)
 
 docker run -d --name skynet-service \
     -p 8000:8000 \
