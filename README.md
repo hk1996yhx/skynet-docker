@@ -6,9 +6,9 @@
 
 其中 -t skynet_docker 指定了镜像的标签，而 . 表示 Docker 上下文目录为当前目录（其中包含 Dockerfile 和 src 目录）。
 
-2.使用下面的命令来启动 Skynet 容器：(下面每一行都是有\连接符,被格式化了)
+2.使用下面的命令来启动 Skynet 容器：
 
-    docker run -d --name skynet-service \
+    docker run -d --name 服务名字 \
         -p 8000:8000 \
         -p 9000:9000 \
         -v "${PWD}/src:/yhx/src" \
@@ -26,5 +26,7 @@
 请确保在运行上述命令之前，您的 ./src 目录中含有正确的 Skynet 配置文件，并且已经存在 ./src/etc/config.nodedb 路径。
 
 这些命令可以让你在 Docker 中部署并运行 Skynet 服务，摆脱仅限于 Linux 系统的束缚。
+
 你可以在 Docker 支持的任何系统上运行 Skynet 容器，包括 Windows 和 macOS。
-仅供入门skynet学习使用,不做任何后期维护!
+
+##仅供入门skynet学习使用,不做任何后期维护!
