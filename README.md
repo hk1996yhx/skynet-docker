@@ -9,6 +9,8 @@ yhx
 
 --------etc
 
+------------config.nodedb
+
 --------lualib
 
 --------service
