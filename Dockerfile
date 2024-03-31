@@ -32,7 +32,7 @@ RUN cd /yhx/skynet && make cleanall && make linux
 EXPOSE 8000
 
 # 设置工作目录
-WORKDIR /yhx/skynet
+WORKDIR /yhx/src
 
 # 当容器启动时运行Skynet
-CMD ["./skynet", "etc/config.node0"]  # 假设配置文件在Skynet目录下
+CMD ["../skynet/skynet", "./etc/config.nodedb"]  # 假设配置文件在Skynet目录下
