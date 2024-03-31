@@ -2,21 +2,20 @@
 
 1.构建 Skynet Docker 镜像
 
-docker build -t skynet_docker .
+    docker build -t skynet_docker .
 
 其中 -t skynet_docker 指定了镜像的标签，而 . 表示 Docker 上下文目录为当前目录（其中包含 Dockerfile 和 src 目录）。
 
 2.使用下面的命令来启动 Skynet 容器：(下面每一行都是有\连接符,被格式化了)
 
-docker run -d --name skynet-service \
-    -p 8000:8000 \
-    -p 9000:9000 \
-    -v "${PWD}/src:/yhx/src" \
-    skynet_docker \
-    ../skynet/skynet ./etc/config.nodedb
+    docker run -d --name skynet-service \
+        -p 8000:8000 \
+        -p 9000:9000 \
+        -v "${PWD}/src:/yhx/src" \
+        skynet_docker \
+        ../skynet/skynet ./etc/config.nodedb
     
 这条命令的各个组成部分意味着：
-
 - -d：后台运行容器。
 - --name skynet-service：设置容器名称为 skynet-service。
 - -p 8000:8000 和 -p 9000:9000：将容器内的 8000 和 9000 端口分别映射到主机的相同端口。
