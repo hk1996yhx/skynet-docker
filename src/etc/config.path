@@ -1,0 +1,6 @@
+--lua地址配置项
+cpath = "../skynet/cservice/?.so"
+lualoader ="../skynet/lualib/loader.lua"
+lua_cpath ="./luaclib/?.so;".."../skynet/luaclib/?.so"
+lua_path ="./lualib/?.lua;".."./lualib/mmo/?.lua;".."./etc/?.lua;".."../skynet/lualib/?.lua;".."../skynet/lualib/?/init.lua"
+luaservice ="./service/?.lua;".."../skynet/service/?.lua;"
