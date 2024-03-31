@@ -27,4 +27,3 @@ if %errorlevel%==0 (
     echo Docker container '%CONTAINER_NAME%' failed to start.
 )
 
-pause
