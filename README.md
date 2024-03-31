@@ -1,3 +1,4 @@
+skynet_docker全平台运行,支持windows,没有变动skynet源码,改了lua以支持中文变量
 #您可以通过以下命令在 Docker 中构建 Skynet 服务的镜像：
 
 1.构建 Skynet Docker 镜像
