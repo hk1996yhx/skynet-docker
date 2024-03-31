@@ -1,13 +1,21 @@
 skynet_docker全平台运行,支持windows,没有变动skynet源码,改了lua以支持中文变量
 #您可以通过以下命令在 Docker 中构建 Skynet 服务的镜像：
-
-1.构建 Skynet Docker 镜像
+目录结构:
+    yhx
+        skynet
+        src
+            etc
+            lualib
+            service
+            log
+        
+1.进入dockerfile目录,构建 Skynet Docker 镜像
 
     docker build -t skynet_docker .
 
 其中 -t skynet_docker 指定了镜像的标签，而 . 表示 Docker 上下文目录为当前目录（其中包含 Dockerfile 和 src 目录）。
 
-2.使用下面的命令来启动 Skynet 容器：
+2.使用下面的命令来启动 Skynet 容器(装了dockerdesktop只有第一次要代码启动)：
 
     docker run -d --name service-DB `
         -p 8000:8000 `
