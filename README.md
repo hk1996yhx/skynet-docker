@@ -2,12 +2,12 @@ skynet_docker全平台运行,支持windows,没有变动skynet源码,改了lua以
 #您可以通过以下命令在 Docker 中构建 Skynet 服务的镜像：
 目录结构:
 -yhx
---skynet
---src
----etc
----lualib
----service
----log
+        --skynet
+        --src
+                ---etc
+                ---lualib
+                ---service
+                ---log
         
 1.进入dockerfile目录,构建 Skynet Docker 镜像
 
