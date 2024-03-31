@@ -1,38 +1,30 @@
-# 使用基础镜像
-FROM ubuntu:latest
-
-# 设置环境变量以支持UTF-8编码
-ENV LANG C.UTF-8
-ENV LC_ALL C.UTF-8
-
-# 安装必要的工具和库
-RUN apt-get update && apt-get install -y \
+# 使用多阶段构建
+# 第一阶段：编译
+FROM alpine:latest as builder
+# 安装构建依赖的软件包
+RUN apk add --no-cache \
     git \
-    build-essential \
+    build-base \
     autoconf \
-    libreadline-dev \
-    libncurses5-dev \
-    libssl-dev \
-    gcc \
+    readline-dev \
+    ncurses-libs \
+    ncurses-dev \
+    openssl-dev \
     curl \
     lua5.3 \
-    liblua5.3-dev
-
-# 克隆Skynet仓库
-RUN git clone https://github.com/cloudwu/skynet.git /yhx/skynet
-
-# 使用本地的src/llex.c替换容器里的skynet/3rd/lua/llex.c
-# 请确保你在运行docker build命令的当前目录中有一个src目录和llex.c文件
+    lua5.3-dev \
+    && git clone https://github.com/cloudwu/skynet.git /yhx/skynet 
+# 复制修改的llex.c以支持中文变量
 COPY src/llex.c /yhx/skynet/3rd/lua/llex.c
-
-# 清理第三方库编译的对象文件，然后重新编译，确保Lua也会重新编译
-RUN cd /yhx/skynet && make cleanall && make linux
-
-# 暴露Skynet需要的端口
-EXPOSE 8000
-
-# 设置工作目录
-WORKDIR /yhx/src
-
-# 当容器启动时运行Skynet
-CMD ["../skynet/skynet", "./etc/config.nodedb"]  # 假设配置文件在Skynet目录下
+# 重新编译lua
+RUN cd /yhx/skynet/3rd/lua && make linux 
+# 编译skynet
+RUN  cd /yhx/skynet && make linux
+# 第二阶段：生成最终镜像
+FROM alpine:latest
+# 安装 Skynet 运行时依赖的软件包
+RUN apk add --no-cache libstdc++ lua5.3-libs
+# 创建 Skynet 工作目录
+WORKDIR /yhx/src 
+# 从编译阶段复制 Skynet 二进制文件和配置文件到镜像中
+COPY --from=builder /yhx/skynet /yhx/skynet
