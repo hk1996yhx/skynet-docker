@@ -2,7 +2,7 @@
 SET CONTAINER_NAME=service-DB
 SET IMAGE_NAME=skynet_docker
 SET SOURCE_PATH=src
-SET START_SCRIPT=../skynet/examples/config
+SET START_SCRIPT=/yhx/src/s.sh
 echo Checking if the container '%CONTAINER_NAME%' already exists...
 docker container ls -a | findstr "%CONTAINER_NAME%" >nul 2>&1
 if %errorlevel%==0 (
